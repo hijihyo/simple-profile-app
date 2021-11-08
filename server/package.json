@@ -1,0 +1,7 @@
+{
+  "name": "simple-profile-app-server",
+  "version": "0.1.0",
+  "main": "index.ts",
+  "author": "Seunghyun Kim",
+  "license": "MIT"
+}
