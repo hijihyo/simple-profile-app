@@ -27,7 +27,7 @@ const Sidebar = ({ sidebar, toggleDrawer }) => {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component="a" href="/profiles">
+          <ListItemButton component="a" href="/profile">
             <ListItemIcon><LibraryBooksIcon /></ListItemIcon>
             <ListItemText primary="Profiles" />
           </ListItemButton>
