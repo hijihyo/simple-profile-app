@@ -8,8 +8,8 @@ const Profile = () => {
     username: "alice99",
     firstName: "Alice",
     lastName: "Hawawa",
-    gender: "female",
-    job: "teacher",
+    gender: "Female",
+    job: "Teacher",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, accumsan tempor massa vel, facilisis varius mi.",
   };
