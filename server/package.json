@@ -1,7 +1,25 @@
 {
-  "name": "simple-profile-app-server",
-  "version": "0.1.0",
-  "main": "index.ts",
-  "author": "Seunghyun Kim",
-  "license": "MIT"
+   "name": "simple-profile-app-server",
+   "version": "0.1.0",
+   "main": "index.ts",
+   "author": "Seunghyun Kim",
+   "license": "MIT",
+   "scripts": {
+      "dev": "ts-node src/index.ts",
+      "start": "ts-node src/index.ts",
+      "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
+   },
+   "dependencies": {
+      "body-parser": "^1.19.0",
+      "express": "^4.17.1",
+      "mysql": "^2.14.1",
+      "typeorm": "0.2.40",
+      "reflect-metadata": "^0.1.10"
+   },
+   "devDependencies": {
+      "@types/express": "^4.17.13",
+      "@types/node": "^8.0.29",
+      "ts-node": "3.3.0",
+      "typescript": "3.3.3333"
+   }
 }
