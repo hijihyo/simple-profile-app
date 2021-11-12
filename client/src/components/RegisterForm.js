@@ -16,12 +16,12 @@ const RegisterForm = () => {
         <TextField
           required id="password" name="password"
           label="Password" autoComplete="new-password"
-          variant="standard" fullWidth
+          variant="standard" fullWidth type="password"
         />
         <TextField
           required id="confirm-password"
           label="Confirm password" autoComplete="password"
-          variant="standard" fullWidth
+          variant="standard" fullWidth type="password"
         />
       </Box>
     </React.Fragment>
