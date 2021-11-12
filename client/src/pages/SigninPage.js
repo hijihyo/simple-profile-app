@@ -12,7 +12,7 @@ import Container from "@mui/material/Container"
 
 import Copyright from "../components/Copyright"
 
-const Signin = () => {
+const SigninPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
@@ -72,4 +72,4 @@ const Signin = () => {
   )
 }
 
-export default Signin
+export default SigninPage

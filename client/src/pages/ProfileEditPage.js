@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProfileEdit = () => {
+const ProfileEditPage = () => {
   return (
     <div>
       <h1>Profile edit page</h1>
@@ -8,4 +8,4 @@ const ProfileEdit = () => {
   )
 }
 
-export default ProfileEdit
+export default ProfileEditPage

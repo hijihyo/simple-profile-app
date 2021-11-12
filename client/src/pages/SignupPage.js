@@ -37,7 +37,7 @@ const getStepContent = (step) => {
   }
 };
 
-const Signup = () => {
+const SignupPage = () => {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -106,4 +106,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignupPage
