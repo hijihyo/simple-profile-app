@@ -1,12 +1,8 @@
 import React from "react"
-import Box from "@mui/material/Box"
-import Typography from "@mui/material/Typography"
-import TextField from "@mui/material/TextField"
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import {
+  Box, FormControl, FormControlLabel, FormLabel,
+  Radio, RadioGroup, TextField, Typography
+} from "@mui/material";
 
 const ProfileForm = () => {
   return (

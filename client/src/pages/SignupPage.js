@@ -1,19 +1,17 @@
-import React from "react";
-import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Paper from "@mui/material/Paper";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import RegisterForm from "../components/RegisterForm";
-import ProfileForm from "../components/ProfileForm";
-import Copyright from "../components/Copyright";
+import React from "react"
+import CssBaseline from "@mui/material/CssBaseline"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import Paper from "@mui/material/Paper"
+import Stepper from "@mui/material/Stepper"
+import Step from "@mui/material/Step"
+import StepLabel from "@mui/material/StepLabel"
+import Button from "@mui/material/Button"
+import Typography from "@mui/material/Typography"
+import { createTheme, ThemeProvider } from "@mui/material/styles"
+import { Copyright, ProfileForm, RegisterForm } from "../components"
 
-const steps = ["Register", "Write your profile"];
+const steps = ["Register", "Write your profile"]
 
 const theme = createTheme({
   palette: {
@@ -24,29 +22,29 @@ const theme = createTheme({
       contrastText: "#ffffff",
     },
   },
-});
+})
 
 const getStepContent = (step) => {
   switch (step) {
     case 0:
-      return <RegisterForm />;
+      return <RegisterForm />
     case 1:
-      return <ProfileForm />;
+      return <ProfileForm />
     default:
-      throw new Error("Unknown step");
+      throw new Error("Unknown step")
   }
-};
+}
 
 const SignupPage = () => {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = React.useState(0)
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
+    setActiveStep(activeStep + 1)
+  }
 
   const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
+    setActiveStep(activeStep - 1)
+  }
 
   return (
     <ThemeProvider theme={ theme }>
@@ -103,7 +101,7 @@ const SignupPage = () => {
         <Copyright sx={{ mt: 2, mb: 4 }} />
       </Container>
     </ThemeProvider>
-  );
-};
+  )
+}
 
 export default SignupPage

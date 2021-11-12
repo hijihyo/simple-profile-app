@@ -42,7 +42,7 @@ function App() {
               <Route path="/signup" element={<SignupPage />}></Route>
               <Route path="/profile" element={<ProfilesPage />}></Route>
               <Route path="/profile/:pid" element={<ProfilePage />}></Route>
-              <Route path="/myprofile" element={<ProfilePage mypage={ true }/>}></Route>
+              <Route path="/myprofile" element={<ProfilePage myprofile={ true }/>}></Route>
               <Route path="/myprofile/edit" element={<ProfileEditPage />}></Route>
               <Route path="*" element={<NotFoundPage />}></Route>
             </Routes>
