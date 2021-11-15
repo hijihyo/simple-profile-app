@@ -1,12 +1,22 @@
 import express from 'express';
 import session from 'express-session';
 import { createConnection } from 'typeorm';
-import routes from './routes';
+import router from './routes';
 import './env';
 
+// interface SessionUser {
+//     id: number;
+//     username: string;
+// }
+
+// declare module 'express-session' {
+//     interface SessionData {
+//         user: SessionUser | undefined
+//     }
+// }
 declare module 'express-session' {
-    interface SessionData {
-        user: { id: number; username: string; }
+    export interface SessionData {
+      user: { [key: string]: any };
     }
 }
 
@@ -27,7 +37,7 @@ const sessionConfig = {
 // }
 app.use(session(sessionConfig))
 
-app.use('/api', routes);
+app.use('/api', router);
 
 (async (): Promise<void> => {
     try {

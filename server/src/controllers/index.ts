@@ -42,6 +42,7 @@ export const signup: RequestHandler = async (req, res, _next) => {
         await ProfileModule.insertOne(
             firstName, lastName, gender, job, description, user
         );
+        return res.json({ uid: user.id, username: user.username });
     } catch (e) {
         const tempUser = await UserModule.findOne({ username });
         if (tempUser) await UserModule.deleteOne({ id: tempUser.id });
@@ -49,7 +50,6 @@ export const signup: RequestHandler = async (req, res, _next) => {
         if (tempProfile) await UserModule.deleteOne({ id: tempProfile.id });
         return res.sendStatus(500); // Internal Server Error
     }
-    return res.json({});
 };
 
 export const signin: RequestHandler = async (req, res, _next) => {
@@ -64,15 +64,15 @@ export const signin: RequestHandler = async (req, res, _next) => {
         const user = await UserModule.findOne({ username });
         if (!user) return res.sendStatus(401); // Unauthorized
         const isVerified = await verifyPassword(password, user.hashedPassword);
-        if (!isVerified) return res.status(401); // Unauthorized
+        if (!isVerified) return res.sendStatus(401); // Unauthorized
         req.session.user= {
             id: user.id,
             username: user.username
         };
+        return res.json({ uid: user.id, username: user.username });
     } catch (e) {
         return res.sendStatus(500); // Internal Server Error
     }
-    return res.json({});
 };
 
 export const signout: RequestHandler = async (req, res, _next) => {
@@ -86,8 +86,38 @@ export const signout: RequestHandler = async (req, res, _next) => {
     return res.json({});
 };
 
-// export const signup: RequestHandler = async (req, res, _next) => {};
+export const confirmSession: RequestHandler = async (req, res, _next) => {
+    const { user } = req.session;
+    if (!user) return res.sendStatus(401); // Unauthorized
+    return res.json(user);
+};
 
-// export const signup: RequestHandler = async (req, res, _next) => {};
+export const getProfiles: RequestHandler = async (req, res, _next) => {
+    const { user } = req.session;
+    if (!user) return res.sendStatus(401); // Unauthorized
+    const rawProfiles = await ProfileModule.getAll();
+    const profiles = rawProfiles.map(rawProfile => {
+        const { id, firstName, lastName } = rawProfile;
+        return { id, firstName, lastName };
+    })
+    return res.json(profiles);
+};
 
-// export const signup: RequestHandler = async (req, res, _next) => {};
+export const getProfile: RequestHandler = async (req, res, _next) => {
+    const { user } = req.session;
+    if (!user) return res.sendStatus(401); // Unauthorized
+    const { id } = req.params;
+    const rawProfile = await ProfileModule.findOne({ id });
+    if (!rawProfile) return res.sendStatus(404); // Not Found
+    const { user: owner, ...profile } = rawProfile;
+    return res.json({ username: owner.username, ...profile });
+};
+
+export const getMyProfile: RequestHandler = async (req, res, _next) => {
+    const { user } = req.session;
+    if (!user) return res.sendStatus(401); // Unauthorized
+    const rawProfile = await ProfileModule.findOne({ user: { id: user.id } });
+    if (!rawProfile) return res.sendStatus(404); // Not Found
+    const { user: owner, ...profile } = rawProfile;
+    return res.json({ username: owner.username, ...profile });
+};

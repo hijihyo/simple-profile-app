@@ -5,7 +5,7 @@
    "author": "Seunghyun Kim",
    "license": "MIT",
    "scripts": {
-      "dev": "ts-node src/index.ts",
+      "dev": "cross-env NODE_ENV=dev ts-node-dev --rs --watch src --notify --respawn src/index.ts",
       "start": "ts-node src/index.ts",
       "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
    },
@@ -22,7 +22,9 @@
    "devDependencies": {
       "@types/express": "^4.17.13",
       "@types/node": "^8.0.29",
+      "cross-env": "^7.0.3",
       "ts-node": "3.3.0",
+      "ts-node-dev": "^1.1.8",
       "typescript": "3.3.3333"
    }
 }

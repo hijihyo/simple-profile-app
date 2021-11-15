@@ -18,12 +18,12 @@ export const insertOne = async (firstName, lastName, gender, job, description, u
 
 export const findOne = async (props) => {
     const repository = getRepository(Profile);
-    const profile = await repository.findOne(props);
+    const profile = await repository.findOne({ where: props, relations: [ "user" ] });
     return profile;
 }
 
 export const getAll = async () => {
     const repository = getRepository(Profile);
-    const profilesWithUsers = await repository.find({ relations: [ "user" ]});
+    const profilesWithUsers = await repository.find();
     return profilesWithUsers;
 }
