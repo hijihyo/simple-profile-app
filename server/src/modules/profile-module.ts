@@ -12,7 +12,8 @@ export const insertOne = async (firstName, lastName, gender, job, description, u
     profile.description = description;
     profile.user = user;
     await repository.save(profile);
-    return profile;
+    user.profile = profile;
+    await getRepository(User).save(user);
 }
 
 export const findOne = async (props) => {

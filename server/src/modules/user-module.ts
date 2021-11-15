@@ -7,11 +7,16 @@ export const insertOne = async (username, hashedPassword) => {
     user.username = username;
     user.hashedPassword = hashedPassword;
     await repository.save(user);
-    return user;
 }
 
 export const findOne = async (props) => {
     const repository = getRepository(User);
     const user = await repository.findOne(props);
+    return user;
+}
+
+export const deleteOne = async (props) => {
+    const repository = getRepository(User);
+    const user = await repository.delete(props);
     return user;
 }
