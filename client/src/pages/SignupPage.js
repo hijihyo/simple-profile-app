@@ -5,6 +5,7 @@ import {
 } from "@mui/material"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { Copyright, ProfileForm, RegisterForm } from "../components"
+import { postSignup } from "../api";
 
 const steps = ["Register", "Write your profile"]
 
@@ -19,26 +20,42 @@ const theme = createTheme({
   },
 })
 
-const getStepContent = (step) => {
+const getStepContent = (step, props) => {
   switch (step) {
     case 0:
-      return <RegisterForm />
+      return <RegisterForm {...props} />
     case 1:
-      return <ProfileForm />
+      return <ProfileForm {...props} />
     default:
       throw new Error("Unknown step")
   }
 }
 
 const SignupPage = () => {
-  const [activeStep, setActiveStep] = React.useState(0)
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [firstName, setFirstName] = React.useState('');
+  const [lastName, setLastName] = React.useState('');
+  const [gender, setGender] = React.useState('');
+  const [job, setJob] = React.useState('');
+  const [description, setDescription] = React.useState('');
+  const [uid, setUid] = React.useState(0);
 
   const handleNext = () => {
     setActiveStep(activeStep + 1)
   }
-
   const handleBack = () => {
     setActiveStep(activeStep - 1)
+  }
+
+  const handleSubmit = async () => {
+    const formData = {
+        username, password, firstName, lastName, gender, job, description
+    };
+    const result = await postSignup(formData);
+    setUid(result.data.uid);
+    handleNext();
   }
 
   return (
@@ -63,17 +80,18 @@ const SignupPage = () => {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
+                  Thank you for signing up.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
+                  Your user id is { uid }. Enjoy our services!
                 </Typography>
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep)}
+                { getStepContent(activeStep, { 
+                    setUsername, setPassword, setFirstName, setLastName, setGender, setJob, setDescription
+                  })
+                }
                 <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
@@ -83,7 +101,7 @@ const SignupPage = () => {
 
                   <Button
                     variant="contained"
-                    onClick={handleNext}
+                    onClick={ activeStep === steps.length - 1 ? handleSubmit : handleNext }
                     sx={{ mt: 3, ml: 1 }}
                   >
                     {activeStep === steps.length - 1 ? "Sign up" : "Next"}

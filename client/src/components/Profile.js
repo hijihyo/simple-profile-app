@@ -2,17 +2,7 @@ import React from "react";
 import { Box, Grid, Paper, Typography } from '@mui/material'
 import AccountBoxIcon from '@mui/icons-material/AccountBox'
 
-const Profile = () => {
-  const user = {
-    id: 1,
-    username: "alice99",
-    firstName: "Alice",
-    lastName: "Hawawa",
-    gender: "Female",
-    job: "Teacher",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, accumsan tempor massa vel, facilisis varius mi.",
-  };
+const Profile = ({ profile }) => {
   return (
     <Paper
       variant="outlined" fullWidth="true"
@@ -21,13 +11,13 @@ const Profile = () => {
       <Box fullWidth="true" sx={{ px: { xs: 2, md: 25 }}}>
         <AccountBoxIcon sx={{ color: "#d1c4e9", width: "18vw", height: "18vh" }}/>
         <Typography component="h4" variant="h4">
-          { `${ user.firstName } ${ user.lastName } (${ user.username })` }
+          { `${ profile.firstName } ${ profile.lastName } (${ profile.username })` }
         </Typography>
         <Typography
           component="body1"
           sx={{ color: "#9e9e9e", fontStyle: "italic" }}
         >
-          { user.description }
+          { profile.description }
         </Typography>
       </Box>
       <Grid
@@ -41,7 +31,7 @@ const Profile = () => {
         </Grid>
         <Grid item xs={ 6 }>
           <Typography component="body1" variant="h6">
-            { user.gender }
+            { profile.gender }
           </Typography>
           </Grid>
         <Grid item xs={ 6 }>
@@ -51,7 +41,7 @@ const Profile = () => {
         </Grid>
         <Grid item xs={ 6 }>
           <Typography component="body1" variant="h6">
-            { user.job }
+            { profile.job }
           </Typography>
         </Grid>
       </Grid>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate} from "react-router-dom"
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -9,14 +10,23 @@ import Drawer from '@mui/material/Drawer'
 import MenuIcon from '@mui/icons-material/Menu'
 
 import Sidebar from './Sidebar'
+import { postSignout } from "../api";
 
-const Header = () => {
+const Header = ({ auth, setAuth }) => {
   const [sidebar, setSidebar] = React.useState(false)
+  const navigate = useNavigate();
+
   const toggleDrawer = (value) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return
     }
     setSidebar(value)
+  }
+
+  const handleSignout = async () => {
+    const result = await postSignout();
+    setAuth(undefined)
+    navigate("/");
   }
 
   return (
@@ -40,18 +50,33 @@ const Header = () => {
           >
             Simple Profile App
           </Link>
-          <Button
-            variant="outlined" href="/signin" size="large"
-            sx={{ mx: '0.5vw', px: '1vw', color: "secondary.main", fontWeight: "bold", borderColor: "secondary.main", "&:hover": { backgroundColor: "#eeeeee", borderColor: "secondary.main", boxShadow: 'none', } }}
-          >
-            Sign In
-          </Button>
-          <Button
-            href="/signup" size="large"
-            sx={{ mx: '0.5vw', px: '1vw', color: "primary.main", fontWeight: "bold", backgroundColor: "secondary.main", "&:hover": { backgroundColor: "secondary.dark", boxShadow: 'none', } }}
-          >
+          { auth && (
+            <Button
+                variant="outlined" size="large" onClick={ handleSignout }
+                sx={{ mx: '0.5vw', px: '1vw', color: "secondary.main", fontWeight: "bold", borderColor: "secondary.main", "&:hover": { backgroundColor: "#eeeeee", borderColor: "secondary.main", boxShadow: 'none', } }}
+            >
+                Sign Out
+            </Button>
+            )
+          }
+          { !auth && (
+            <Button
+                variant="outlined" href="/signin" size="large"
+                sx={{ mx: '0.5vw', px: '1vw', color: "secondary.main", fontWeight: "bold", borderColor: "secondary.main", "&:hover": { backgroundColor: "#eeeeee", borderColor: "secondary.main", boxShadow: 'none', } }}
+            >
+                Sign In
+            </Button>
+            )
+          }
+          { !auth && (
+            <Button
+                href="/signup" size="large"
+                sx={{ mx: '0.5vw', px: '1vw', color: "primary.main", fontWeight: "bold", backgroundColor: "secondary.main", "&:hover": { backgroundColor: "secondary.dark", boxShadow: 'none', } }}
+            >
             Sign Up
-          </Button>
+            </Button>
+            )
+          }
         </Toolbar>
       </AppBar>
     </Box>

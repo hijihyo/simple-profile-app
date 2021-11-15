@@ -1,4 +1,5 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
 import Avatar from "@mui/material/Avatar"
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
@@ -11,16 +12,21 @@ import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 
 import { Copyright } from "../components"
+import { postSignin } from "../api"
 
-const SigninPage = () => {
-  const handleSubmit = (event) => {
+const SigninPage = ({ auth, setAuth }) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    // eslint-disable-next-line no-console
-    console.log({
-      username: data.get("username"),
-      password: data.get("password"),
-    })
+    const formData = {
+        username: data.get("username"),
+        password: data.get("password")
+    }
+    const result = await postSignin(formData);
+    setAuth(result.data);
+    navigate("/");
   }
 
   return (
