@@ -1,5 +1,5 @@
 import { getRepository } from "typeorm";
-import User from "../entities/User";
+import User from "../entities/user";
 
 export const insertOne = async (username, hashedPassword) => {
     const repository = getRepository(User);

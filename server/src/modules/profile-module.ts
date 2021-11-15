@@ -1,6 +1,6 @@
 import { getRepository } from "typeorm";
-import User from "../entities/User";
-import Profile from "../entities/Profile";
+import User from "../entities/user";
+import Profile from "../entities/profile";
 
 export const insertOne = async (firstName, lastName, gender, job, description, user: User) => {
     const repository = getRepository(Profile);

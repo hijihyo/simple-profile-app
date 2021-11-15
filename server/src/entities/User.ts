@@ -5,7 +5,7 @@ import {
     OneToOne,
     JoinColumn
 } from "typeorm";
-import Profile from "./Profile";
+import Profile from "./profile";
 
 @Entity()
 export default class User {

@@ -1,5 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn} from "typeorm";
-import User from "./User";
+import User from "./user";
 
 @Entity()
 export default class Profile {
