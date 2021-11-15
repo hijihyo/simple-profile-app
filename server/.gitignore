@@ -3,6 +3,7 @@
 build/
 tmp/
 temp/
+.env*
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,node,yarn
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode,node,yarn
