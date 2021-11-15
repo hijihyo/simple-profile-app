@@ -6,10 +6,8 @@ KWEB 212R 정회원 스터디의 1차 프로젝트로, 간단한 프로필 조�
 
 ## **Table of Contents**
 
-- [**Simple Profile App**](#simple-profile-app)
-  - [**Table of Contents**](#table-of-contents)
-  - [**Installation**](#installation)
-  - [**Features**](#features)
+- [**Installation**](#installation)
+- [**Features**](#features)
 
 ## **Installation**
 
