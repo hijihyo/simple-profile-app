@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/simple-profile-app/static/css/main.c3d5943d.chunk.css",
+    "main.js": "/simple-profile-app/static/js/main.5139ed8b.chunk.js",
+    "main.js.map": "/simple-profile-app/static/js/main.5139ed8b.chunk.js.map",
+    "runtime-main.js": "/simple-profile-app/static/js/runtime-main.ef2eaa69.js",
+    "runtime-main.js.map": "/simple-profile-app/static/js/runtime-main.ef2eaa69.js.map",
+    "static/js/2.d8fee4c3.chunk.js": "/simple-profile-app/static/js/2.d8fee4c3.chunk.js",
+    "static/js/2.d8fee4c3.chunk.js.map": "/simple-profile-app/static/js/2.d8fee4c3.chunk.js.map",
+    "static/js/3.c3e4ad56.chunk.js": "/simple-profile-app/static/js/3.c3e4ad56.chunk.js",
+    "static/js/3.c3e4ad56.chunk.js.map": "/simple-profile-app/static/js/3.c3e4ad56.chunk.js.map",
+    "index.html": "/simple-profile-app/index.html",
+    "static/css/main.c3d5943d.chunk.css.map": "/simple-profile-app/static/css/main.c3d5943d.chunk.css.map",
+    "static/js/2.d8fee4c3.chunk.js.LICENSE.txt": "/simple-profile-app/static/js/2.d8fee4c3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ef2eaa69.js",
+    "static/js/2.d8fee4c3.chunk.js",
+    "static/css/main.c3d5943d.chunk.css",
+    "static/js/main.5139ed8b.chunk.js"
+  ]
+}
